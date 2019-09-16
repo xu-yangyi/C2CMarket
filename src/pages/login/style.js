@@ -1,12 +1,11 @@
 import styled from 'styled-components';
 
 export const LoginWrapper = styled.div`
-	z-index: 0;
 	position: absolute;
 	left: 0;
 	right: 0;
 	bottom: 0;
-	top: 56px;
+	top: 120px;
 	background: #eee;
 `;
 
@@ -16,7 +15,19 @@ export const LoginBox = styled.div`
 	margin: 100px auto;
 	padding-top: 20px;
 	background: #fff;
-	box-shadow: 0 0 8px rgba(0,0,0,.1);
+	box-shadow: 8px 8px 8px rgba(0,0,0,.1);
+	border-radius:6px
+	#zhuce{
+	    margin:-6px 0 -4px 255px
+        color:grey
+        font-size:2px
+        cursor:pointer
+	}
+	#zhuce:hover{
+	    color:black
+	    text-decoration:underline;
+	    font-weight:bold
+	}
 `;
 
 export const Input = styled.input`
@@ -39,3 +50,10 @@ export const Button = styled.div`
 	margin: 10px auto;
 	text-align: center;
 `;
+
+export const Label = styled.div`
+    margin:-6px 0 -12px 85px
+    color:red
+    font-size:2px
+    cursor:pointer
+`

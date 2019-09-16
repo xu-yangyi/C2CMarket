@@ -4,22 +4,22 @@ import { getRedirectPath } from "./util";
 //reducer
 const initState={
     redirectTo:'',
-    msg:"",
+    auth:false,
     user:"",
-    salary:"",
     pwd:"",
-    type:"",
+    contact:"",
+    msg:'',
 };
 export function User(state=initState,action){
     switch (action.type) {
         case AUTH_SUCCESS:
-            return {...state ,msg:'' ,redirectTo:getRedirectPath(action.data) , ...action.data};
+            return {...state ,msg:'' ,redirectTo:'/',auth:true,...action.data};
         case ERROR_MSG:
             return {...state,msg:action.msg};
         case LOAD_DATA:
             return {...state ,...action.data};
         case LOGOUT:
-            return {...initState,redirectTo:'/login'};
+            return {...initState};
         default: return state
     }
 }
@@ -35,23 +35,27 @@ const LOGOUT='user/logout';
 
 
 //ActionCreators   存储所有操作或者查询redux的action
-function errorMsg(msg) {
+export function errorMsg(msg) {
     return {msg, type:ERROR_MSG}}      //msg相当于msg:msg,简写则放在首位
 function authSuccess(data) {
     return {type:AUTH_SUCCESS,data:data}
 }
-export function register({user,pwd,repeatpwd,type}){
-    if (!user||!pwd||!repeatpwd){
+
+export function register({user,pwd,repeat,contact}){
+    if (!user||!pwd||!repeat){
         return errorMsg("用户名密码输入不能为空")
     }
-    if(pwd!==repeatpwd){
+    if(!(2<=user.length<=10) || !(6<=pwd.length<=13) || !(6<=repeat.length<=13)){
+        return errorMsg('注册信息长度不符合规范')
+    }
+    if(pwd!==repeat){
         return errorMsg("两次输入密码不一致")
     }
     return async dispatch=>{
-        const res=await axios.post('/user/register',{user ,pwd ,type})
+        const res=await axios.post('/user/register',{user,pwd,contact});
 
         if(res.status===200&&res.data.code===0){
-            dispatch(authSuccess({user,pwd,type}))
+            dispatch(authSuccess({user:user,contact:contact}))
         }else {
             dispatch(errorMsg(res.data.msg))
         }
@@ -64,7 +68,8 @@ export function login({user,pwd}) {
     return async dispatch=>{
         const res=await axios.post('/user/login',{user,pwd})
         if(res.status===200&&res.data.code===0){
-            dispatch(authSuccess(res.data.data))
+            console.log(res.data)
+            dispatch(authSuccess(res.data))
         }else {
             dispatch(errorMsg(res.data.msg))
         }
