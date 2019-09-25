@@ -10,6 +10,9 @@ import {applyMiddleware, compose, createStore} from "redux";
 import thunk from "redux-thunk";
 import reducer from "./reducer";
 import {Provider} from "react-redux";
+import SchoolC2C from "./pages/demo/schoolC2C/schoolC2C";
+import SchoolC2CUpload from "./pages/demo/schoolC2C/SchoolC2CUpload";
+
 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -25,6 +28,8 @@ function App() {
                     <Route path={'/'} exact component={Home}/>
                     <Route path={'/login'} exact component={Login}/>
                     <Route path={'/register'} exact component={Register}/>
+                    <Route path={'/schoolC2C'} exact component={SchoolC2C}/>
+                    <Route path={'/schoolC2C/upload'} exact component={SchoolC2CUpload}/>
                 </BrowserRouter>
             </Provider>
 

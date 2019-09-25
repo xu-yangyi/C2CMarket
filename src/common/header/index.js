@@ -1,5 +1,5 @@
 import React from 'react'
-import {Wrapper,Categorys,CateItem,CenterList,ListItem} from "./style";
+import {Wrapper,Categorys,CateItem,ItemList,ListItem} from "./style";
 import {withRouter} from 'react-router-dom'
 import {connect} from "react-redux";
 import {logoutUser} from "../../redux/user.redux";
@@ -13,12 +13,8 @@ import {logoutUser} from "../../redux/user.redux";
 )
 class Header extends React.Component{
 
-    turnTo=(url)=>{
-        this.props.history.push(url)
-    };
-
-    showList(){
-        const list = document.getElementById('CenterList')
+    showList(str){
+        const list = document.getElementById(str);
         if(list.style.display==='block') {
             list.style.display='none'
         }else {
@@ -34,22 +30,26 @@ class Header extends React.Component{
                 <img id={'chai'} src={require('./chai.png')} alt="doge"/>
                 <div><span id={'big'}>均 远</span>--个人博客</div>
                 <Categorys>
-                    <CateItem
-                        onClick={()=>this.turnTo('/')}
-                    >首页</CateItem>
+                    <CateItem onClick={()=>this.props.history.push('/')}>首页</CateItem>
                     <CateItem>学习笔记</CateItem>
                     <CateItem>生活杂谈</CateItem>
-                    <CateItem>个人Demo</CateItem>
+                    <CateItem onClick={()=>{this.showList('demo')}}>个人Demo</CateItem>
                     <CateItem>给我留言</CateItem>
+
                     {this.props.auth?
-                    <span id={'login'} onClick={()=>this.showList()}>您好！{this.props.user}</span>
-                    :<span id={'login'} onClick={()=>this.turnTo('/login')}>登录</span>}
-                    <CenterList id={"CenterList"}>
-                        <ListItem onClick={()=>this.showList()}>个人中心</ListItem>
-                        <ListItem
-                            onClick={()=>{this.props.logoutUser();this.showList();this.props.history.push('/')}}
-                        >退出登录</ListItem>
-                    </CenterList>
+                    <span id={'login'} onClick={()=>this.showList("CenterList")}>您好！{this.props.user}</span>
+                    :<span id={'login'} onClick={()=>this.props.history.push('/login')}>登录</span>}
+
+                    {/*附加部分，每个菜单的下属*/}
+                    <ItemList id={"CenterList"} onClick={()=>this.showList("CenterList")}>
+                        <ListItem >个人中心</ListItem>
+                        <ListItem onClick={()=>{this.props.logoutUser();this.props.history.push('/')}}>退出登录</ListItem>
+                    </ItemList>
+
+                    <ItemList id={"demo"}>
+                        <ListItem onClick={()=>{this.showList('demo');this.props.history.push('/schoolC2C')}}>跳蚤市场</ListItem>
+                    </ItemList>
+
                 </Categorys>
             </Wrapper>
         )

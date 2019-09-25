@@ -29,10 +29,11 @@ export const Wrapper = styled.div`
         margin:35px 20px 10px 20px;
         font-size:3em;
         color:#FBFBFF;
-    }
+        }
   `;
 
 export const Categorys=styled.div`
+    position:relative
     margin-top:10px
     width:100%
     height:40px
@@ -45,6 +46,15 @@ export const Categorys=styled.div`
         display:inline-block;
         margin:5px 40px 0 0
         text-align:center
+    }
+    
+    #CenterList{
+        width:100px
+        margin:0 0 3px 1220px
+    }
+    #demo{
+        width:150px
+        margin:0 0 3px 450px
     }
     
 `
@@ -62,19 +72,19 @@ export const CateItem=styled.div`
     }
 `
 
-export const CenterList=styled.div`
+export const ItemList=styled.div`
     display:none
     position:relative
-    margin:0 0 3px 1220px
-    width:100px
+    background-color:#83858B
 `
 export const ListItem=styled.div`
-    display:inline-block
+    width:100%
+    text-align:center
+    cursor:pointer
     animation: base_show 1s;
-    background-color:#83858B
-    padding:1px 5px
     @keyframes base_show {
       0% {opacity: 0}
       100%{opacity: 1;}
     }
+
 `
