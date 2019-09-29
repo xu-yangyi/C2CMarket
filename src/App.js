@@ -11,7 +11,8 @@ import thunk from "redux-thunk";
 import reducer from "./reducer";
 import {Provider} from "react-redux";
 import SchoolC2C from "./pages/demo/schoolC2C/schoolC2C";
-import SchoolC2CUpload from "./pages/demo/schoolC2C/SchoolC2CUpload";
+import SchoolC2CUpload from "./pages/demo/schoolC2C/schoolC2CUpload";
+import SchoolUserChat from "./pages/demo/schoolC2C/schoolUserChat";
 
 
 
@@ -29,7 +30,8 @@ function App() {
                     <Route path={'/login'} exact component={Login}/>
                     <Route path={'/register'} exact component={Register}/>
                     <Route path={'/schoolC2C'} exact component={SchoolC2C}/>
-                    <Route path={'/schoolC2C/upload'} exact component={SchoolC2CUpload}/>
+                    <Route path={'/schoolC2C/Upload'} exact component={SchoolC2CUpload}/>
+                    <Route path={'/schoolC2C/userChat'} exact component={SchoolUserChat}/>
                 </BrowserRouter>
             </Provider>
 

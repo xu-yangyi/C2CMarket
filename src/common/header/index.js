@@ -28,7 +28,7 @@ class Header extends React.Component{
             <Wrapper>
                 <img id={'logo'} src={require('./logo.png')} alt="logo"/>
                 <img id={'chai'} src={require('./chai.png')} alt="doge"/>
-                <div><span id={'big'}>均 远</span>--个人博客</div>
+                <div><span id={'big'}>　</span>--个人博客</div>
                 <Categorys>
                     <CateItem onClick={()=>this.props.history.push('/')}>首页</CateItem>
                     <CateItem>学习笔记</CateItem>

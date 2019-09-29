@@ -6,6 +6,20 @@ export const ListWrapper=styled.div`
     background-color:#FCFCFC
     box-shadow:1px 1px 5px grey
     border-radius:10px
+    .addition{
+        display:inline-block
+        float:right
+        margin:0 20px 0 0
+        font-family:sans-serif
+        font-size:17px 
+        color:#747474
+        text-align:center
+        cursor:pointer
+        :hover{
+            font-weight:bold
+            text-decoration:underline;
+        }
+    }
     #logo{
         display:block
         margin:10px auto
@@ -26,20 +40,7 @@ export const ListWrapper=styled.div`
         text-align:center
         margin:30px auto
     }
-    #all{
-        display:inline-block
-        float:right
-        margin:0 20px 0 0
-        font-family:sans-serif
-        font-size:17px 
-        color:#747474
-        text-align:center
-        cursor:pointer
-        :hover{
-            font-weight:bold
-            text-decoration:underline;
-        }
-    }
+
 `;
 export const Items=styled.div`
     width:84%
@@ -76,6 +77,16 @@ export const Items=styled.div`
         display:block
         margin:5px 0 1px 10px 
     }
+    #del{
+        float:right
+        margin:-90px -30px
+        padding:2px 2px 2px 4px
+        width:15px
+        height:15px
+        border:1px solid black
+        border-radius:10px
+        cursor:pointer
+    }
 `;
 export const Intro=styled.div`
     position:relative
@@ -83,4 +94,17 @@ export const Intro=styled.div`
     height:50%
     margin:-16px 0 0 285px
     
+`
+export const Favor=styled.div`
+    float:right
+    font-weight:bold
+    cursor:pointer
+    margin:-160px 5px 0 0 
+    width:20px
+    height:20px
+    img{
+        width:20px
+        height:20px
+        margin:0 0
+    }
 `

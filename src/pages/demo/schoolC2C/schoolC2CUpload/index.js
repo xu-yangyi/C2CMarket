@@ -2,7 +2,7 @@ import React from 'react'
 import {Wrapper, BigPage, UploadWrapper, InfoWrapper,Button,UploadError} from "./style";
 import {connect} from "react-redux";
 import {errorMsg, logoutUser, school_login, school_register,register_item} from "../../../../redux/schoolC2c.redux/schoolUser.redux";
-import {AuthButton, SearchFrame, UserBoard} from "../schoolC2C/style";
+import UserBoard from '../userBoard'
 import CropperModel from '../../../../common/cropperModel'
 
 
@@ -86,16 +86,7 @@ class SchoolC2CUpload extends React.Component{
                     </UploadWrapper>
 
                     {/*用户控制列表*/}
-                    {this.props.auth?
-                        <UserBoard>
-                            <p>您好！{this.props.user}</p>
-                            <AuthButton className={'auth'} onClick={()=>this.handleChange('order','myItems')}>我的上架</AuthButton>
-                            <AuthButton className={'auth'}>我的消息</AuthButton>
-                            <AuthButton className={'auth'}>我的收藏</AuthButton>
-                            <AuthButton className={'auth'} onClick={()=>this.props.logoutUser()}>退出登录</AuthButton>
-                            <SearchFrame>这是搜索栏</SearchFrame>
-                        </UserBoard>
-                        :this.props.history.push('/schoolC2C')}
+                    <UserBoard/>
                 </BigPage>
             </Wrapper>
         )

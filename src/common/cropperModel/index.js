@@ -78,7 +78,7 @@ class CroppweModel extends Component {
                 <button className="submit-button" onClick={this.handleSubmit}>
                   点击提交
                 </button>
-                <button className="cancel-button" onClick={()=>this.handleChange('showPanel',false)}>
+                <button className="cancel-button" onClick={()=>this.props.closeComponent()}>
                   取消上传
                 </button>
               </Button_row>
