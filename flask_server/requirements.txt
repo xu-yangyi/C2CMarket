@@ -3,7 +3,7 @@ chardet==3.0.4
 Click==7.0
 cymysql==0.9.14
 Flask==1.1.1
-Flask-Cors==3.0.8
+Flask-Cors==3.0.9
 Flask-SQLAlchemy==2.4.0
 idna==2.8
 itsdangerous==1.1.0
